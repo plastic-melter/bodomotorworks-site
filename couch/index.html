@@ -3,22 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>COUCH-E | Electric Couches by Bodo Motorworks</title>
-<meta name="description" content="The COUCH-E. Fully electric. Zero emissions. Zero reasons. Configure yours today.">
-<meta property="og:title" content="COUCH-E by Bodo Motorworks">
-<meta property="og:description" content="The sofa that goes. Fully electric couches, now taking reservations.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛋️</text></svg>">
+<title>COUCH-E | Bodo Motor Werkz</title>
+<meta name="description" content="The COUCH-E by Bodo Motor Werkz. Fully electric. Zero emissions. Zero reasons. Configure yours today.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bodomotorworks.com/couch/">
+<meta property="og:title" content="COUCH-E by Bodo Motor Werkz">
+<meta property="og:description" content="The sofa that goes. Real prototype, real footage, real bad idea.">
+<meta property="og:image" content="https://bodomotorworks.com/couch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0c0c0d">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <style>
+  @font-face { font-family: "Russo One"; src: url("../fonts/russo-one-latin-400-normal.woff2") format("woff2"); font-display: swap; }
+  @font-face { font-family: "Michroma"; src: url("../fonts/michroma-latin-400-normal.woff2") format("woff2"); font-display: swap; }
+  @font-face { font-family: "UnifrakturMaguntia"; src: url("../fonts/unifrakturmaguntia-latin-400-normal.woff2") format("woff2"); font-display: swap; }
+
   :root {
-    --bg: #0d0f12;
-    --panel: #15181d;
-    --line: #262b33;
-    --text: #eef1f4;
-    --muted: #8b939e;
-    --volt: #d4ff3a;
-    --upholstery: #b4532a;
-    --upholstery-dark: #8a3d1d;
+    --bg: #0c0c0d;
+    --panel: #151517;
+    --line: #29292d;
+    --text: #f1f1f1;
+    --muted: #8f9096;
+    --black: #3a3a3e;   /* the "black" flag stripe, lifted so it shows on a dark page */
+    --red: #dd1f1f;
+    --gold: #ffcc00;
     --radius: 14px;
+    --display: "Russo One", ui-sans-serif, system-ui, sans-serif;
+    --wide: "Michroma", ui-sans-serif, system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -33,19 +46,31 @@
   a { color: inherit; }
   .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
+  /* ---------- brand mark ---------- */
+  .stripes { display: inline-flex; gap: .14em; transform: skewX(-20deg); }
+  .stripes i { display: block; width: .26em; height: .9em; }
+  .stripes i:nth-child(1) { background: var(--black); }
+  .stripes i:nth-child(2) { background: var(--red); }
+  .stripes i:nth-child(3) { background: var(--gold); }
+
+  .brand { display: inline-flex; flex-direction: column; text-decoration: none; line-height: 1; color: var(--text); }
+  .brand .top { display: flex; align-items: center; gap: .22em; font-size: 26px; }
+  .brand .bodo { font-family: var(--display); transform: skewX(-12deg); letter-spacing: .02em; }
+  .brand .werkz { font-family: var(--wide); font-size: 8.6px; letter-spacing: .34em; color: #cfd0d4; margin-top: 5px; padding-left: 1px; }
+
+  .tri-rule { height: 4px; background: linear-gradient(90deg, var(--black) 0 33.3%, var(--red) 33.3% 66.6%, var(--gold) 66.6%); }
+
   /* ---------- banner + nav ---------- */
   .banner {
-    background: var(--volt); color: #111; text-align: center;
-    font-size: 13px; font-weight: 600; padding: 8px 12px; letter-spacing: .02em;
+    background: var(--gold); color: #111; text-align: center;
+    font-size: 13px; font-weight: 700; padding: 8px 12px; letter-spacing: .02em;
   }
   nav {
     position: sticky; top: 0; z-index: 20;
-    background: rgba(13,15,18,.85); backdrop-filter: blur(10px);
+    background: rgba(12,12,13,.88); backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
   }
-  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .logo { font-weight: 900; letter-spacing: .18em; font-size: 15px; text-decoration: none; }
-  .logo span { color: var(--volt); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
   .navlinks { display: flex; gap: 28px; font-size: 14px; color: var(--muted); }
   .navlinks a { text-decoration: none; }
   .navlinks a:hover { color: var(--text); }
@@ -53,59 +78,86 @@
     background: none; border: 1px solid var(--line); color: var(--text);
     border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 14px; cursor: pointer;
   }
-  .cart b { color: var(--volt); }
+  .cart b { color: var(--gold); }
   @media (max-width: 760px) { .navlinks { display: none; } }
 
   /* ---------- product hero ---------- */
   .product { display: grid; grid-template-columns: 1.35fr 1fr; gap: 40px; padding: 40px 0 64px; }
-  .gallery { position: sticky; top: 88px; align-self: start; }
+  .gallery { position: sticky; top: 92px; align-self: start; }
   @media (max-width: 920px) { .product { grid-template-columns: 1fr; } .gallery { position: static; } }
 
   .stage {
     position: relative; overflow: hidden;
-    background: radial-gradient(ellipse at 50% 85%, #222833 0%, var(--panel) 60%);
+    background: radial-gradient(ellipse at 50% 85%, #26262b 0%, var(--panel) 60%);
     border: 1px solid var(--line); border-radius: var(--radius);
     aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center;
   }
   .stage .tag {
-    position: absolute; top: 16px; left: 16px;
-    font-size: 12px; font-weight: 700; letter-spacing: .12em;
-    background: var(--volt); color: #111; padding: 4px 10px; border-radius: 999px;
+    position: absolute; top: 16px; left: 16px; z-index: 2;
+    font-family: var(--wide); font-size: 10px; letter-spacing: .14em;
+    background: var(--gold); color: #111; padding: 6px 10px; border-radius: 999px;
   }
-  .stage .tag2 {
-    position: absolute; top: 16px; right: 16px; font-size: 12px; color: var(--muted);
+  .stage .tag2 { position: absolute; top: 18px; right: 16px; font-size: 12px; color: var(--muted); z-index: 2; }
+  .stage .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; }
+  .stage .caption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 18px 14px; display: none;
+    background: linear-gradient(transparent, rgba(0,0,0,.85)); font-size: 14px;
   }
-  #couch { width: 88%; height: auto; overflow: visible; }
-  #couch .uph { fill: var(--upholstery); transition: fill .35s; }
-  #couch .uph-dark { fill: var(--upholstery-dark); transition: fill .35s; }
-  .wheel { transform-box: fill-box; transform-origin: center; }
-  .speedlines { opacity: 0; }
+  .stage.show-photo .photo, .stage.show-photo .caption { display: block; }
+  .stage.show-photo #couch, .stage.show-photo .tag2 { display: none; }
 
-  .driving #couch-body { animation: drive 2.6s cubic-bezier(.55,0,.35,1) forwards; }
-  .driving .wheel { animation: spin .25s linear infinite; }
+  /* the real prototype, cut out of its photo */
+  #couch {
+    position: relative; z-index: 1; width: 86%; height: auto; margin-top: 4%;
+    filter: var(--paint, none) drop-shadow(0 18px 18px rgba(0,0,0,.55));
+    transition: filter .4s;
+  }
+  .floor { position: absolute; left: 12%; right: 12%; bottom: 13%; height: 7%; border-radius: 50%; background: rgba(0,0,0,.45); filter: blur(10px); }
+  .speedlines { position: absolute; left: 2%; top: 42%; width: 22%; display: grid; gap: 18px; opacity: 0; z-index: 2; }
+  .speedlines i { display: block; height: 6px; border-radius: 3px; }
+  .speedlines i:nth-child(1) { background: #55555b; width: 70%; }
+  .speedlines i:nth-child(2) { background: var(--red); width: 100%; }
+  .speedlines i:nth-child(3) { background: var(--gold); width: 55%; }
+
+  .driving #couch { animation: drive 2.6s cubic-bezier(.55,0,.35,1) forwards; }
   .driving .speedlines { animation: lines 2.6s forwards; }
-  .driving .plug { animation: unplug 2.6s forwards; }
+  .driving .floor { animation: lines-out 2.6s forwards; }
   @keyframes drive {
     0% { transform: translateX(0); }
-    12% { transform: translateX(-12px) rotate(-1deg); }
-    55% { transform: translateX(900px) rotate(-3deg); }
-    55.01% { transform: translateX(-900px); }
+    12% { transform: translateX(-14px) rotate(-1.5deg); }
+    30% { transform: translateX(220px) rotate(1deg) translateY(-3px); }
+    55% { transform: translateX(1000px) rotate(-2deg); }
+    55.01% { transform: translateX(-1000px); }
     100% { transform: translateX(0); }
   }
-  @keyframes spin { to { transform: rotate(360deg); } }
   @keyframes lines { 0%,10% { opacity: 0; } 20%,50% { opacity: 1; } 56%,100% { opacity: 0; } }
-  @keyframes unplug { 0%,10% { opacity: 1; } 15%,95% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes lines-out { 0%,12% { opacity: 1; } 18%,90% { opacity: 0; } 100% { opacity: 1; } }
 
-  .thumbs { display: flex; gap: 10px; margin-top: 12px; }
-  .thumbs div {
-    flex: 1; height: 64px; border-radius: 10px; border: 1px solid var(--line);
-    background: var(--panel); display: grid; place-items: center; font-size: 12px; color: var(--muted);
+  .video-wrap { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: #000; }
+  .video-wrap video { display: block; width: 100%; height: auto; }
+  .video-wrap .live {
+    position: absolute; top: 14px; left: 14px; font-family: var(--wide); font-size: 10px; letter-spacing: .16em;
+    background: var(--red); color: #fff; padding: 6px 10px; border-radius: 999px; pointer-events: none;
   }
+  .video-note { color: var(--muted); font-size: 14px; margin-top: 12px; }
 
-  .buy h1 { font-size: clamp(34px, 5vw, 52px); line-height: 1; margin: 6px 0 6px; letter-spacing: -.02em; }
-  .eyebrow { color: var(--volt); font-size: 13px; font-weight: 700; letter-spacing: .14em; }
+  .thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
+  .thumb {
+    position: relative; height: 72px; border-radius: 10px; border: 1px solid var(--line); overflow: hidden;
+    background: var(--panel) center / cover no-repeat; cursor: pointer; padding: 0; color: var(--muted);
+    font: inherit; font-size: 12px; display: grid; place-items: center;
+  }
+  .thumb span {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 2px 6px; font-size: 11px; text-align: left;
+    background: rgba(0,0,0,.65); color: #ddd;
+  }
+  .thumb[aria-pressed="true"] { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold) inset; }
+
+  .buy h1 { font-family: var(--display); font-size: clamp(36px, 5vw, 54px); line-height: 1; margin: 8px 0 8px; transform: skewX(-8deg); transform-origin: left; letter-spacing: .01em; font-weight: 400; }
+  .eyebrow { font-family: var(--wide); color: var(--gold); font-size: 11px; letter-spacing: .2em; display: flex; align-items: center; gap: 10px; }
+  .eyebrow .stripes { font-size: 14px; }
   .subtitle { color: var(--muted); margin: 0 0 18px; }
-  .stars { color: var(--volt); font-size: 14px; }
+  .stars { color: var(--gold); font-size: 14px; }
   .stars span { color: var(--muted); }
   .price { display: flex; align-items: baseline; gap: 12px; margin: 18px 0 4px; }
   .price .now { font-size: 34px; font-weight: 800; }
@@ -113,8 +165,8 @@
   .finance { color: var(--muted); font-size: 13px; margin-bottom: 22px; }
 
   .group { margin: 20px 0; }
-  .group h3 { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; font-weight: 600; }
-  .group h3 em { color: var(--text); font-style: normal; text-transform: none; letter-spacing: 0; }
+  .group h3 { font-family: var(--wide); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; font-weight: 400; }
+  .group h3 em { font-family: ui-sans-serif, system-ui, sans-serif; color: var(--text); font-style: normal; text-transform: none; letter-spacing: 0; font-size: 13px; }
 
   .trims { display: grid; gap: 10px; }
   .trim {
@@ -123,21 +175,21 @@
     background: var(--panel); cursor: pointer; text-align: left; color: var(--text); font: inherit;
   }
   .trim small { display: block; color: var(--muted); font-size: 12.5px; }
-  .trim[aria-pressed="true"] { border-color: var(--volt); box-shadow: 0 0 0 1px var(--volt) inset; }
+  .trim[aria-pressed="true"] { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold) inset; }
 
   .swatches { display: flex; gap: 10px; flex-wrap: wrap; }
   .swatch {
     width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
     border: 2px solid var(--bg); outline: 2px solid var(--line);
   }
-  .swatch[aria-pressed="true"] { outline-color: var(--volt); }
+  .swatch[aria-pressed="true"] { outline-color: var(--gold); }
 
   .addons { display: grid; gap: 8px; }
   .addon {
     display: flex; gap: 12px; align-items: flex-start; cursor: pointer;
     border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; background: var(--panel);
   }
-  .addon input { accent-color: var(--volt); margin-top: 4px; }
+  .addon input { accent-color: var(--gold); margin-top: 4px; }
   .addon div { flex: 1; font-size: 14.5px; }
   .addon small { display: block; color: var(--muted); font-size: 12.5px; }
   .addon b { font-size: 14px; white-space: nowrap; }
@@ -147,20 +199,21 @@
     border: 0; border-radius: 12px; padding: 16px 20px; font: inherit; font-weight: 700;
     cursor: pointer; font-size: 16px;
   }
-  .btn-primary { background: var(--volt); color: #111; }
+  .btn-primary { background: var(--gold); color: #111; }
   .btn-primary:hover { filter: brightness(1.08); }
   .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
   .btn-ghost:hover { border-color: var(--muted); }
   .ship { color: var(--muted); font-size: 13px; margin-top: 12px; }
 
   /* ---------- sections ---------- */
-  section { padding: 64px 0; border-top: 1px solid var(--line); }
-  section h2 { font-size: clamp(26px, 3.5vw, 36px); margin: 0 0 8px; letter-spacing: -.01em; }
+  section { padding: 64px 0; border-top: 1px solid var(--line); scroll-margin-top: 70px; }
+  section h2 { font-family: var(--display); font-weight: 400; font-size: clamp(26px, 3.5vw, 36px); margin: 0 0 8px; transform: skewX(-6deg); transform-origin: left; }
   section .lead { color: var(--muted); margin: 0 0 32px; max-width: 640px; }
+  .kicker { font-family: var(--wide); font-size: 10.5px; letter-spacing: .22em; color: var(--red); margin-bottom: 10px; }
 
   .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
   .stats div { background: var(--panel); padding: 24px; }
-  .stats b { display: block; font-size: 28px; color: var(--volt); }
+  .stats b { display: block; font-family: var(--display); font-weight: 400; font-size: 30px; color: var(--gold); }
   .stats span { color: var(--muted); font-size: 13.5px; }
   @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 
@@ -170,6 +223,25 @@
   .feature h4 { margin: 10px 0 6px; font-size: 18px; }
   .feature p { margin: 0; color: var(--muted); font-size: 14.5px; }
   @media (max-width: 860px) { .features { grid-template-columns: 1fr; } }
+
+  .werkstatt { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .werkstatt figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .werkstatt img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+  .werkstatt figcaption { padding: 14px 18px; color: var(--muted); font-size: 14px; }
+  .werkstatt figcaption b { color: var(--text); }
+  @media (max-width: 760px) { .werkstatt { grid-template-columns: 1fr; } }
+
+  .merch { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .merch img { width: 100%; border-radius: var(--radius); border: 1px solid var(--line); display: block; }
+  .merch h3 { font-family: var(--display); font-weight: 400; font-size: 28px; margin: 6px 0; }
+  .merch p { color: var(--muted); }
+  .sizes { display: flex; gap: 8px; margin: 16px 0 20px; flex-wrap: wrap; }
+  .sizes button {
+    min-width: 48px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line);
+    background: var(--panel); color: var(--text); font: inherit; cursor: pointer;
+  }
+  .sizes button[aria-pressed="true"] { border-color: var(--gold); }
+  @media (max-width: 760px) { .merch { grid-template-columns: 1fr; } }
 
   table.specs { width: 100%; border-collapse: collapse; font-size: 15px; }
   table.specs td { padding: 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -183,24 +255,31 @@
 
   details { border-bottom: 1px solid var(--line); padding: 16px 0; }
   summary { cursor: pointer; font-weight: 600; font-size: 16.5px; list-style: none; display: flex; justify-content: space-between; }
-  summary::after { content: "+"; color: var(--volt); font-size: 20px; line-height: 1; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--gold); font-size: 20px; line-height: 1; }
   details[open] summary::after { content: "–"; }
   details p { color: var(--muted); margin: 10px 0 0; }
 
-  footer { border-top: 1px solid var(--line); padding: 40px 0 56px; color: var(--muted); font-size: 13px; }
-  footer .logo { display: inline-block; margin-bottom: 10px; color: var(--text); }
+  footer { padding: 48px 0 56px; color: var(--muted); font-size: 13px; }
+  footer .row { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+  .heritage { text-align: center; color: #e9e4d8; line-height: 1; }
+  .heritage .frak { font-family: "UnifrakturMaguntia", serif; font-size: 46px; }
+  .heritage .sub { font-family: var(--wide); font-size: 8.5px; letter-spacing: .3em; margin-top: 6px; }
+  .heritage .est { font-family: var(--wide); font-size: 8px; letter-spacing: .25em; color: var(--muted); margin-top: 8px; }
+  footer .legal { max-width: 560px; margin-top: 20px; }
 
   /* ---------- toast ---------- */
   .toast {
-    position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 140%);
+    position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 160%);
     background: var(--text); color: #111; padding: 14px 20px; border-radius: 12px;
     font-weight: 600; font-size: 15px; max-width: calc(100% - 32px); text-align: center;
     box-shadow: 0 12px 40px rgba(0,0,0,.5); transition: transform .3s ease; z-index: 50;
+    border-bottom: 4px solid var(--gold); visibility: hidden; opacity: 0;
   }
-  .toast.show { transform: translate(-50%, 0); }
+  .toast.show { transform: translate(-50%, 0); visibility: visible; opacity: 1; }
 
   @media (prefers-reduced-motion: reduce) {
-    .driving #couch-body, .driving .wheel, .driving .speedlines, .driving .plug { animation: none; }
+    .driving #couch, .driving .speedlines, .driving .floor { animation: none; }
   }
 </style>
 </head>
@@ -210,98 +289,53 @@
 
 <nav>
   <div class="wrap">
-    <a class="logo" href="#">BODO<span>/</span>MOTORWORKS</a>
+    <a class="brand" href="/" aria-label="Bodo Motor Werkz home">
+      <span class="top"><span class="bodo">BODO</span><span class="stripes" aria-hidden="true"><i></i><i></i><i></i></span></span>
+      <span class="werkz">MOTOR WERKZ</span>
+    </a>
     <div class="navlinks">
-      <a href="#">Couches</a>
+      <a href="#testfahrt">Test Drive</a>
       <a href="#specs">Specs</a>
-      <a href="#reviews">Owners</a>
+      <a href="#werkstatt">Werkstatt</a>
+      <a href="#merch">Merch</a>
       <a href="#faq">Support</a>
     </div>
     <button class="cart" id="cartBtn" type="button">Cart (<b id="cartCount">0</b>)</button>
   </div>
 </nav>
+<div class="tri-rule"></div>
 
 <main class="wrap">
   <div class="product">
-    <!-- product image -->
+    <!-- product gallery -->
     <div class="gallery">
       <div class="stage" id="stage">
-        <span class="tag">NEW</span>
-        <span class="tag2">Model shown with optional cupholders</span>
+        <span class="tag">NEU</span>
+        <span class="tag2">Pre-production prototype. Footrest deployed for aero.</span>
+        <img class="photo" id="stagePhoto" alt="">
+        <div class="caption" id="stageCaption"></div>
 
-        <svg id="couch" viewBox="0 0 640 340" role="img" aria-label="Illustration of an electric couch on wheels">
-          <!-- wall outlet + cable -->
-          <g class="plug">
-            <rect x="598" y="150" width="30" height="44" rx="5" fill="#e8e8e8"/>
-            <rect x="607" y="160" width="4" height="10" rx="1" fill="#333"/>
-            <rect x="616" y="160" width="4" height="10" rx="1" fill="#333"/>
-            <path d="M600 178 C 570 190, 575 255, 548 248" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round"/>
-          </g>
-
-          <!-- speed lines -->
-          <g class="speedlines" stroke="#d4ff3a" stroke-width="5" stroke-linecap="round">
-            <line x1="-40" y1="140" x2="10" y2="140"/>
-            <line x1="-80" y1="190" x2="0" y2="190"/>
-            <line x1="-30" y1="240" x2="20" y2="240"/>
-          </g>
-
-          <g id="couch-body">
-            <!-- shadow -->
-            <ellipse cx="300" cy="318" rx="260" ry="12" fill="#000" opacity=".35"/>
-            <!-- chassis / battery pack -->
-            <rect x="70" y="236" width="460" height="34" rx="8" fill="#2a2f37"/>
-            <rect x="92" y="244" width="120" height="18" rx="4" fill="#d4ff3a"/>
-            <text x="152" y="257.5" text-anchor="middle" font-size="12" font-weight="800" font-family="system-ui, sans-serif" fill="#111">⚡ 98 kWh</text>
-            <!-- back -->
-            <rect x="92" y="70" width="416" height="120" rx="34" class="uph-dark"/>
-            <!-- back cushions -->
-            <rect x="122" y="88" width="170" height="96" rx="24" class="uph"/>
-            <rect x="308" y="88" width="170" height="96" rx="24" class="uph"/>
-            <!-- seat cushions -->
-            <rect x="110" y="176" width="190" height="58" rx="18" class="uph"/>
-            <rect x="300" y="176" width="190" height="58" rx="18" class="uph"/>
-            <line x1="300" y1="182" x2="300" y2="230" stroke="#000" stroke-opacity=".18" stroke-width="3"/>
-            <!-- arms -->
-            <rect x="52" y="128" width="72" height="116" rx="28" class="uph-dark"/>
-            <rect x="476" y="128" width="72" height="116" rx="28" class="uph-dark"/>
-            <!-- cupholders -->
-            <ellipse cx="88" cy="134" rx="16" ry="5" fill="#111" opacity=".55"/>
-            <ellipse cx="512" cy="134" rx="16" ry="5" fill="#111" opacity=".55"/>
-            <!-- racing stripe -->
-            <rect x="290" y="70" width="20" height="120" fill="#fff" opacity=".18"/>
-            <!-- headlights -->
-            <rect x="534" y="244" width="16" height="10" rx="3" fill="#fff8c4"/>
-            <rect x="50" y="244" width="14" height="10" rx="3" fill="#ff4d4d"/>
-            <!-- wheels -->
-            <g class="wheel">
-              <circle cx="140" cy="284" r="32" fill="#111"/>
-              <circle cx="140" cy="284" r="16" fill="#9aa3ad"/>
-              <rect x="137" y="256" width="6" height="56" fill="#9aa3ad"/>
-              <rect x="112" y="281" width="56" height="6" fill="#9aa3ad"/>
-            </g>
-            <g class="wheel">
-              <circle cx="460" cy="284" r="32" fill="#111"/>
-              <circle cx="460" cy="284" r="16" fill="#9aa3ad"/>
-              <rect x="457" y="256" width="6" height="56" fill="#9aa3ad"/>
-              <rect x="432" y="281" width="56" height="6" fill="#9aa3ad"/>
-            </g>
-          </g>
-        </svg>
+        <span class="speedlines" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="floor" aria-hidden="true"></span>
+        <img id="couch" src="img/motorcouch.webp" width="1097" height="675" alt="The real COUCH-E prototype: a burgundy leather recliner on a motorized wheeled base, fully reclined">
       </div>
-      <div class="thumbs">
-        <div>Front</div><div>Side</div><div>Rear (diffuser)</div><div>Under cushion</div>
-      </div>
+      <div class="thumbs" id="thumbs">
+        <button class="thumb" type="button" data-view="couch" aria-pressed="true" style="background-image:url(img/motorcouch.webp);background-size:contain;background-color:#1c1c20"><span>Studio</span></button>
+        <button class="thumb" type="button" data-view="onlocation" style="background-image:url(img/onlocation.jpg)"><span>On location</span></button>
+        <button class="thumb" type="button" data-view="hq" style="background-image:url(img/hq.jpg)"><span>Factory</span></button>
+        <button class="thumb" type="button" data-view="werkstatt" style="background-image:url(img/werkstatt.jpg)"><span>Final assembly</span></button>
+              </div>
     </div>
 
     <!-- buy box -->
     <div class="buy">
-      <div class="eyebrow">ELECTRIC SEATING DIVISION</div>
-      <h1 id="modelName">COUCH-E GT</h1>
-      <p class="subtitle">The sofa that goes. Fully electric. Zero emissions. Zero reasons.</p>
+      <div class="eyebrow"><span class="stripes" aria-hidden="true"><i></i><i></i><i></i></span>ELECTRIC SEATING DIVISION</div>
+      <h1 id="modelName">COUCH-E R1</h1>
+      <p class="subtitle">The sofa that goes. German engineering, now in your living room. Zero emissions. Zero reasons.</p>
       <div class="stars">★★★★★ <span>4.9 (1,284 reviews, 1,283 from the same guy)</span></div>
 
       <div class="price">
-        <span class="now" id="price">$29,999</span>
+        <span class="now" id="price">$9,999</span>
         <span class="was" id="wasPrice">$34,999</span>
       </div>
       <div class="finance">or 84 low monthly payments of <span id="monthly">$357</span>. Couch not included in couch.</div>
@@ -329,7 +363,19 @@
     </div>
   </div>
 
+  <section id="testfahrt">
+    <div class="kicker">TESTFAHRT</div>
+    <h2>Real footage. Unfortunately.</h2>
+    <p class="lead">The COUCH-E R1 during low-speed validation. Driver fully reclined, as the engineers intended.</p>
+    <div class="video-wrap">
+      <span class="live">● REC</span>
+      <video src="img/testdrive.mp4" poster="img/testdrive-poster.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
+    </div>
+    <div class="video-note">Sound is off by default. Unmute for the full powertrain experience.</div>
+  </section>
+
   <section>
+    <div class="kicker">LEISTUNG</div>
     <h2>Performance you can sit on.</h2>
     <p class="lead">We took the most-used piece of furniture in the house and asked: what if it was also the most dangerous?</p>
     <div class="stats">
@@ -341,6 +387,7 @@
   </section>
 
   <section>
+    <div class="kicker">TECHNIK</div>
     <h2>Engineered in a garage. Probably.</h2>
     <p class="lead">Every COUCH-E is hand-built by someone who should have been doing something else.</p>
     <div class="features">
@@ -353,13 +400,47 @@
     </div>
   </section>
 
+  <section id="werkstatt">
+    <div class="kicker">DIE WERKSTATT</div>
+    <h2>Where the magic (and the fires) happen.</h2>
+    <p class="lead">Every COUCH-E rolls out of the same shop that does our builds, repairs and performance work. The couches get the good lift.</p>
+    <div class="werkstatt">
+      <figure>
+        <img src="img/hq.jpg" alt="Bodo Motor Werkz building sign" loading="lazy">
+        <figcaption><b>Global Headquarters.</b> The sign guy charged by the letter, so we got an extra Z.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/werkstatt.jpg" alt="Bodo Motor Werkz shop wall with a car in the bay" loading="lazy">
+        <figcaption><b>Final assembly bay.</b> Car shown for scale. The couch was out on a test drive.</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section id="specs">
+    <div class="kicker">TECHNISCHE DATEN</div>
     <h2>Specifications</h2>
     <p class="lead">Figures for the currently selected trim. Your results will vary, mostly downward.</p>
     <table class="specs"><tbody id="specTable"></tbody></table>
   </section>
 
+  <section id="merch">
+    <div class="merch">
+      <img src="img/shirt.jpg" alt="Black Bodo Motor Werkz t-shirt with a sports car graphic" loading="lazy">
+      <div>
+        <div class="kicker">OFFICIAL MERCH</div>
+        <h3>Bodo Motor Werkz Crew Tee</h3>
+        <div class="price" style="margin-top:6px"><span class="now" style="font-size:26px">$35</span></div>
+        <p>Heavyweight black cotton. We tried to put the COUCH-E on the shirt, but the art department said a couch "isn't a car." The art department has been reassigned.</p>
+        <div class="sizes" id="sizes">
+          <button type="button">S</button><button type="button">M</button><button type="button" aria-pressed="true">L</button><button type="button">XL</button><button type="button">Couch</button>
+        </div>
+        <button class="btn btn-primary" id="buyShirt" type="button">Add Tee to Cart</button>
+      </div>
+    </div>
+  </section>
+
   <section id="reviews">
+    <div class="kicker">BESITZER</div>
     <h2>What owners are saying</h2>
     <p class="lead">Real reviews from completely real people.</p>
     <div class="reviews">
@@ -370,19 +451,32 @@
   </section>
 
   <section id="faq">
+    <div class="kicker">KUNDENDIENST</div>
     <h2>Support</h2>
     <details><summary>Is the COUCH-E street legal?</summary><p>The COUCH-E is classified as "a couch," and we're comfortable leaving it there.</p></details>
     <details><summary>Can I bring it through a doorway?</summary><p>The Loveseat fits through most doorways. The GT fits through most doorways once. The Track Sectional comes with a sawzall.</p></details>
     <details><summary>Does it come with a warranty?</summary><p>Yes. 3 years or 36 movie nights, whichever comes first. Warranty is voided by popcorn.</p></details>
     <details><summary>What happens if the battery dies mid-episode?</summary><p>The COUCH-E automatically switches to Legacy Mode, in which it is a regular couch.</p></details>
-    <details><summary>Can I lease one?</summary><p>No, but you can sit on one for free at any of our showrooms, of which there are zero.</p></details>
+    <details><summary>Why is it "Werkz" with a Z?</summary><p>Same reason the couch has launch control. Nobody stopped us.</p></details>
   </section>
 </main>
 
+<div class="tri-rule"></div>
 <footer>
   <div class="wrap">
-    <a class="logo" href="#">BODO<span style="color:var(--volt)">/</span>MOTORWORKS</a>
-    <div>© 2026 Bodo Motorworks. COUCH-E is a joke, not a product, and cannot be purchased. Please don't put a motor in your couch.</div>
+    <div class="row">
+      <a class="brand" href="/" aria-label="Bodo Motor Werkz home">
+        <span class="top"><span class="bodo">BODO</span><span class="stripes" aria-hidden="true"><i></i><i></i><i></i></span></span>
+        <span class="werkz">MOTOR WERKZ</span>
+      </a>
+      <div class="heritage" aria-hidden="true">
+        <div class="frak">Bodo</div>
+        <div class="sub">MOTOR WERKZ</div>
+        <div class="est">EST. MMXXIV</div>
+      </div>
+    </div>
+    <div class="legal">© 2026 Bodo Motor Werkz. German Engineering · Builds · Repairs · Couches.<br>
+    COUCH-E is a joke, not a product, and cannot be purchased. Please don't put a motor in your couch.</div>
   </div>
 </footer>
 
@@ -391,6 +485,11 @@
 <script>
   // ---------- data ----------
   const TRIMS = [
+    { id: "r1", name: "COUCH-E R1", short: "R1 Recliner", blurb: "The one that actually exists · 1 seat · as seen on video", price: 9999,
+      stats: { accel: "Eventually", top: "Brisk walk", range: "1 parking lot", seats: "1" },
+      specs: [["Body", "Genuine leather recliner, Made in USA (per sticker)"], ["Drivetrain", "Electric, under-seat, exposed for cooling"], ["Footrest", "Permanently deployed for aerodynamic stability"],
+              ["0 to fridge", "Eventually"], ["Top speed", "Brisk walk, verified on camera"], ["Range", "One office park parking lot"],
+              ["Seating", "1 adult, fully reclined (mandatory)"], ["Badging", "Hand-applied with packing tape"], ["Status", "Prototype. Already street tested. Do not tell anyone."]] },
     { id: "ls", name: "COUCH-E Loveseat", short: "Loveseat", blurb: "Single rear hub motor · 2 seats", price: 14999,
       stats: { accel: "7.9s", top: "12 mph", range: "1 movie", seats: "2" },
       specs: [["Motor", "Single rear hub, 6 kW"], ["Drivetrain", "RWD (Recliner-Wheel Drive)"], ["Battery", "42 kWh (from a forklift)"],
@@ -401,25 +500,26 @@
       specs: [["Motors", "Dual hub, 22 kW combined"], ["Drivetrain", "AWD (All-Weather Davenport)"], ["Battery", "98 kWh, under-cushion mounted"],
               ["0 to fridge", "4.2 seconds"], ["Top speed", "38 mph (indoors), not tested outdoors on purpose"], ["Range", "One full season of a prestige drama"],
               ["Seating", "3 adults plus 1 dog"], ["Curb weight", "1,180 lb"], ["Turning radius", "Your entire living room and the hallway"]] },
-    { id: "ts", name: "COUCH-E Track Sectional", short: "Track Sectional", blurb: "Tri-motor · L-shaped · do not take on the highway", price: 54999,
+    { id: "ts", name: "COUCH-E Track Sectional", short: "Track Sectional", blurb: "Tri-motor · L-shaped · do not take on the Autobahn", price: 54999,
       stats: { accel: "2.1s", top: "71 mph", range: "3 seasons", seats: "6" },
       specs: [["Motors", "Tri-motor, 61 kW, one in the chaise"], ["Drivetrain", "AWD with chaise-mounted torque vectoring"], ["Battery", "160 kWh, distributed across every cushion"],
               ["0 to fridge", "2.1 seconds"], ["Top speed", "71 mph, electronically limited by our lawyer"], ["Range", "Three seasons, or one Super Bowl party"],
               ["Seating", "6 adults, all of whom must sign a waiver"], ["Curb weight", "2,450 lb (floor rating required)"], ["Turning radius", "Not really"]] }
   ];
 
+  // The photo is real oxblood leather; other colors are CSS filters on it.
   const COLORS = [
-    { name: "Grandma's Corduroy", main: "#b4532a", dark: "#8a3d1d" },
-    { name: "Midnight Leatherette", main: "#2b2f36", dark: "#1a1d22" },
-    { name: "Racing Green Velour", main: "#1f6b3a", dark: "#154d29" },
-    { name: "Dorm Room Plaid Red", main: "#a3262c", dark: "#76191e" },
-    { name: "Basement Beige", main: "#c9b79a", dark: "#a08f74" },
-    { name: "Volt Yellow (+$0, -dignity)", main: "#c8ef2f", dark: "#97b81c" }
+    { name: "Oxblood Leather (as tested)", swatch: "#6e1f22", paint: "none" },
+    { name: "Nürburgring Black", swatch: "#232326", paint: "saturate(0) brightness(.6) contrast(1.15)" },
+    { name: "Bundesrot", swatch: "#c4161c", paint: "saturate(1.9) brightness(1.25) hue-rotate(4deg)" },
+    { name: "Goldgelb", swatch: "#e0b100", paint: "hue-rotate(48deg) saturate(2.2) brightness(1.7)" },
+    { name: "Racing Green", swatch: "#1f6b3a", paint: "hue-rotate(135deg) saturate(1.2) brightness(1.05)" },
+    { name: "Basement Beige", swatch: "#c9b79a", paint: "sepia(.8) saturate(.55) brightness(1.75)" }
   ];
 
   const ADDONS = [
     { id: "heat", name: "Heated & Ventilated Cushions", note: "Each cushion independently climate controlled. Arguments about the thermostat resolved forever.", price: 1200 },
-    { id: "cups", name: "Cupholder Performance Pack", note: "Upgrades from 2 to 9 cupholders. One holds a 2-liter.", price: 850 },
+    { id: "cups", name: "Cupholder Performance Pack", note: "Upgrades from 2 to 9 cupholders. One holds a Maß.", price: 850 },
     { id: "v8", name: "V8 Sound Generator", note: "Cold start sequence every time you sit down.", price: 2500 },
     { id: "launch", name: "Launch Control", note: "Hold both armrests and lean back. Requires signed waiver and helmet.", price: 4000 },
     { id: "snack", name: "Under-Cushion Snack Bay", note: "Climate-controlled frunk. Auto-locks during diet season.", price: 499 },
@@ -436,8 +536,14 @@
     "Added. Your HOA has been notified."
   ];
 
+  const VIEWS = {
+    onlocation: { src: "img/onlocation.jpg", caption: "Spotted in the wild. The footrest does not retract. We consider this a feature." },
+    hq: { src: "img/hq.jpg", caption: "Bodo Motor Werkz Global HQ. Couch production happens in the back. Mostly at night." },
+    werkstatt: { src: "img/werkstatt.jpg", caption: "Final assembly. The couch was on a test drive when this was taken." }
+  };
+
   // ---------- state ----------
-  let trim = TRIMS[1];
+  let trim = TRIMS[0];
   let color = COLORS[0];
   const chosen = new Set();
   let cart = 0, msgIdx = 0;
@@ -457,10 +563,9 @@
   function renderSwatches() {
     $("swatches").innerHTML = COLORS.map((c, i) => `
       <button class="swatch" type="button" data-i="${i}" title="${c.name}" aria-label="${c.name}"
-        aria-pressed="${c === color}" style="background:${c.main}"></button>`).join("");
+        aria-pressed="${c === color}" style="background:${c.swatch}"></button>`).join("");
     $("colorName").textContent = color.name;
-    document.documentElement.style.setProperty("--upholstery", color.main);
-    document.documentElement.style.setProperty("--upholstery-dark", color.dark);
+    $("couch").style.setProperty("--paint", color.paint);
   }
 
   function renderAddons() {
@@ -491,6 +596,20 @@
 
   function renderAll() { renderTrims(); renderSwatches(); renderAddons(); renderSpecs(); renderPrice(); }
 
+  // ---------- gallery ----------
+  function showView(view) {
+    const stage = $("stage");
+        document.querySelectorAll("#thumbs .thumb").forEach(t => t.setAttribute("aria-pressed", t.dataset.view === view));
+    if (view === "couch") { stage.classList.remove("show-photo"); return; }
+    $("stagePhoto").src = VIEWS[view].src;
+    $("stagePhoto").alt = VIEWS[view].caption;
+    $("stageCaption").textContent = VIEWS[view].caption;
+    stage.classList.add("show-photo");
+  }
+  $("thumbs").addEventListener("click", (e) => {
+    const b = e.target.closest(".thumb"); if (b) showView(b.dataset.view);
+  });
+
   // ---------- events ----------
   $("trims").addEventListener("click", (e) => {
     const b = e.target.closest(".trim"); if (!b) return;
@@ -502,6 +621,7 @@
     const b = e.target.closest(".swatch"); if (!b) return;
     color = COLORS[+b.dataset.i];
     renderSwatches();
+    showView("couch");
   });
 
   $("addons").addEventListener("change", (e) => {
@@ -521,20 +641,33 @@
     toastTimer = setTimeout(() => t.classList.remove("show"), 3200);
   }
 
+  function bumpCart() { cart++; $("cartCount").textContent = cart; }
+
   $("addToCart").addEventListener("click", () => {
-    cart++;
-    $("cartCount").textContent = cart;
+    bumpCart();
     toast(CART_MSGS[msgIdx++ % CART_MSGS.length]);
   });
 
+  $("sizes").addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    document.querySelectorAll("#sizes button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    if (b.textContent === "Couch") toast("Size: Couch. Fits the COUCH-E GT. Does not fit the Track Sectional.");
+  });
+
+  $("buyShirt").addEventListener("click", () => {
+    bumpCart();
+    toast("Tee added. Ships with the couch. The couch has not shipped.");
+  });
+
   $("cartBtn").addEventListener("click", () => {
-    toast(cart ? `Checkout is closed. The couch ate it. (${cart} couch${cart > 1 ? "es" : ""} lost)` : "Your cart is empty, like the space where your couch used to be.");
+    toast(cart ? `Checkout is closed. The couch ate it. (${cart} item${cart > 1 ? "s" : ""} lost)` : "Your cart is empty, like the space where your couch used to be.");
   });
 
   let driving = false;
   $("testSit").addEventListener("click", () => {
     if (driving) return;
     driving = true;
+    showView("couch");
     const stage = $("stage");
     stage.classList.add("driving");
     toast(chosen.has("v8") ? "VRRRAAAP 🔊" : "Whirrrrrrr ⚡");

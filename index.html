@@ -3,22 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bodo Motorworks</title>
+<title>Bodo Motor Werkz</title>
+<meta name="description" content="Bodo Motor Werkz. German engineering, builds, repairs, performance.">
+<meta name="theme-color" content="#0c0c0d">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <style>
+  @font-face { font-family: "Russo One"; src: url("fonts/russo-one-latin-400-normal.woff2") format("woff2"); font-display: swap; }
+  @font-face { font-family: "Michroma"; src: url("fonts/michroma-latin-400-normal.woff2") format("woff2"); font-display: swap; }
   body {
     margin: 0; min-height: 100vh; display: grid; place-items: center;
-    background: #0d0f12; color: #eef1f4; text-align: center;
+    background: #0c0c0d; color: #f1f1f1; text-align: center;
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   }
-  .logo { font-weight: 900; letter-spacing: .18em; font-size: 22px; }
-  .logo span { color: #d4ff3a; }
-  p { color: #8b939e; }
+  .logo { display: inline-flex; flex-direction: column; align-items: flex-start; line-height: 1; }
+  .top { display: flex; align-items: center; gap: .2em; font-size: clamp(56px, 12vw, 120px); }
+  .bodo { font-family: "Russo One", sans-serif; transform: skewX(-12deg); }
+  .stripes { display: inline-flex; gap: .12em; transform: skewX(-20deg); }
+  .stripes i { display: block; width: .2em; height: .82em; }
+  .stripes i:nth-child(1) { background: #3a3a3e; }
+  .stripes i:nth-child(2) { background: #dd1f1f; }
+  .stripes i:nth-child(3) { background: #ffcc00; }
+  .werkz { font-family: "Michroma", sans-serif; font-size: clamp(14px, 3vw, 30px); letter-spacing: .34em; margin-top: .4em; color: #d6d6da; }
+  .rule { height: 3px; margin: 28px 0 14px; background: linear-gradient(90deg, #3a3a3e 0 33.3%, #dd1f1f 33.3% 66.6%, #ffcc00 66.6%); }
+  .tag { font-family: "Michroma", sans-serif; font-size: 11px; letter-spacing: .3em; color: #8f9096; }
+  p { color: #8f9096; margin-top: 28px; font-size: 14px; }
+  p a { color: #ffcc00; text-decoration: none; }
 </style>
 </head>
 <body>
   <div>
-    <div class="logo">BODO<span>/</span>MOTORWORKS</div>
-    <p>Coming soon.</p>
+    <div class="logo">
+      <div class="top"><span class="bodo">BODO</span><span class="stripes" aria-hidden="true"><i></i><i></i><i></i></span></div>
+      <div class="werkz">MOTOR WERKZ</div>
+    </div>
+    <div class="rule"></div>
+    <div class="tag">GERMAN ENGINEERING · BUILDS · REPAIRS · PERFORMANCE</div>
+    <p>Coming soon. In the meantime, <a href="/couch/">meet the COUCH-E</a>.</p>
   </div>
 </body>
 </html>
