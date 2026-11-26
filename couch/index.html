@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COUCH-E | Electric Couches by Bodo Motorworks</title>
+<meta name="description" content="The COUCH-E. Fully electric. Zero emissions. Zero reasons. Configure yours today.">
+<meta property="og:title" content="COUCH-E by Bodo Motorworks">
+<meta property="og:description" content="The sofa that goes. Fully electric couches, now taking reservations.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛋️</text></svg>">
+<style>
+  :root {
+    --bg: #0d0f12;
+    --panel: #15181d;
+    --line: #262b33;
+    --text: #eef1f4;
+    --muted: #8b939e;
+    --volt: #d4ff3a;
+    --upholstery: #b4532a;
+    --upholstery-dark: #8a3d1d;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- banner + nav ---------- */
+  .banner {
+    background: var(--volt); color: #111; text-align: center;
+    font-size: 13px; font-weight: 600; padding: 8px 12px; letter-spacing: .02em;
+  }
+  nav {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(13,15,18,.85); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-weight: 900; letter-spacing: .18em; font-size: 15px; text-decoration: none; }
+  .logo span { color: var(--volt); }
+  .navlinks { display: flex; gap: 28px; font-size: 14px; color: var(--muted); }
+  .navlinks a { text-decoration: none; }
+  .navlinks a:hover { color: var(--text); }
+  .cart {
+    background: none; border: 1px solid var(--line); color: var(--text);
+    border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 14px; cursor: pointer;
+  }
+  .cart b { color: var(--volt); }
+  @media (max-width: 760px) { .navlinks { display: none; } }
+
+  /* ---------- product hero ---------- */
+  .product { display: grid; grid-template-columns: 1.35fr 1fr; gap: 40px; padding: 40px 0 64px; }
+  .gallery { position: sticky; top: 88px; align-self: start; }
+  @media (max-width: 920px) { .product { grid-template-columns: 1fr; } .gallery { position: static; } }
+
+  .stage {
+    position: relative; overflow: hidden;
+    background: radial-gradient(ellipse at 50% 85%, #222833 0%, var(--panel) 60%);
+    border: 1px solid var(--line); border-radius: var(--radius);
+    aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center;
+  }
+  .stage .tag {
+    position: absolute; top: 16px; left: 16px;
+    font-size: 12px; font-weight: 700; letter-spacing: .12em;
+    background: var(--volt); color: #111; padding: 4px 10px; border-radius: 999px;
+  }
+  .stage .tag2 {
+    position: absolute; top: 16px; right: 16px; font-size: 12px; color: var(--muted);
+  }
+  #couch { width: 88%; height: auto; overflow: visible; }
+  #couch .uph { fill: var(--upholstery); transition: fill .35s; }
+  #couch .uph-dark { fill: var(--upholstery-dark); transition: fill .35s; }
+  .wheel { transform-box: fill-box; transform-origin: center; }
+  .speedlines { opacity: 0; }
+
+  .driving #couch-body { animation: drive 2.6s cubic-bezier(.55,0,.35,1) forwards; }
+  .driving .wheel { animation: spin .25s linear infinite; }
+  .driving .speedlines { animation: lines 2.6s forwards; }
+  .driving .plug { animation: unplug 2.6s forwards; }
+  @keyframes drive {
+    0% { transform: translateX(0); }
+    12% { transform: translateX(-12px) rotate(-1deg); }
+    55% { transform: translateX(900px) rotate(-3deg); }
+    55.01% { transform: translateX(-900px); }
+    100% { transform: translateX(0); }
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes lines { 0%,10% { opacity: 0; } 20%,50% { opacity: 1; } 56%,100% { opacity: 0; } }
+  @keyframes unplug { 0%,10% { opacity: 1; } 15%,95% { opacity: 0; } 100% { opacity: 1; } }
+
+  .thumbs { display: flex; gap: 10px; margin-top: 12px; }
+  .thumbs div {
+    flex: 1; height: 64px; border-radius: 10px; border: 1px solid var(--line);
+    background: var(--panel); display: grid; place-items: center; font-size: 12px; color: var(--muted);
+  }
+
+  .buy h1 { font-size: clamp(34px, 5vw, 52px); line-height: 1; margin: 6px 0 6px; letter-spacing: -.02em; }
+  .eyebrow { color: var(--volt); font-size: 13px; font-weight: 700; letter-spacing: .14em; }
+  .subtitle { color: var(--muted); margin: 0 0 18px; }
+  .stars { color: var(--volt); font-size: 14px; }
+  .stars span { color: var(--muted); }
+  .price { display: flex; align-items: baseline; gap: 12px; margin: 18px 0 4px; }
+  .price .now { font-size: 34px; font-weight: 800; }
+  .price .was { color: var(--muted); text-decoration: line-through; }
+  .finance { color: var(--muted); font-size: 13px; margin-bottom: 22px; }
+
+  .group { margin: 20px 0; }
+  .group h3 { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; font-weight: 600; }
+  .group h3 em { color: var(--text); font-style: normal; text-transform: none; letter-spacing: 0; }
+
+  .trims { display: grid; gap: 10px; }
+  .trim {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px;
+    background: var(--panel); cursor: pointer; text-align: left; color: var(--text); font: inherit;
+  }
+  .trim small { display: block; color: var(--muted); font-size: 12.5px; }
+  .trim[aria-pressed="true"] { border-color: var(--volt); box-shadow: 0 0 0 1px var(--volt) inset; }
+
+  .swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+  .swatch {
+    width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+    border: 2px solid var(--bg); outline: 2px solid var(--line);
+  }
+  .swatch[aria-pressed="true"] { outline-color: var(--volt); }
+
+  .addons { display: grid; gap: 8px; }
+  .addon {
+    display: flex; gap: 12px; align-items: flex-start; cursor: pointer;
+    border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; background: var(--panel);
+  }
+  .addon input { accent-color: var(--volt); margin-top: 4px; }
+  .addon div { flex: 1; font-size: 14.5px; }
+  .addon small { display: block; color: var(--muted); font-size: 12.5px; }
+  .addon b { font-size: 14px; white-space: nowrap; }
+
+  .ctas { display: grid; grid-template-columns: 1fr auto; gap: 10px; margin-top: 22px; }
+  .btn {
+    border: 0; border-radius: 12px; padding: 16px 20px; font: inherit; font-weight: 700;
+    cursor: pointer; font-size: 16px;
+  }
+  .btn-primary { background: var(--volt); color: #111; }
+  .btn-primary:hover { filter: brightness(1.08); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--muted); }
+  .ship { color: var(--muted); font-size: 13px; margin-top: 12px; }
+
+  /* ---------- sections ---------- */
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+  section h2 { font-size: clamp(26px, 3.5vw, 36px); margin: 0 0 8px; letter-spacing: -.01em; }
+  section .lead { color: var(--muted); margin: 0 0 32px; max-width: 640px; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .stats div { background: var(--panel); padding: 24px; }
+  .stats b { display: block; font-size: 28px; color: var(--volt); }
+  .stats span { color: var(--muted); font-size: 13.5px; }
+  @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .feature { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+  .feature .ico { font-size: 28px; }
+  .feature h4 { margin: 10px 0 6px; font-size: 18px; }
+  .feature p { margin: 0; color: var(--muted); font-size: 14.5px; }
+  @media (max-width: 860px) { .features { grid-template-columns: 1fr; } }
+
+  table.specs { width: 100%; border-collapse: collapse; font-size: 15px; }
+  table.specs td { padding: 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.specs td:first-child { color: var(--muted); width: 40%; }
+
+  .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .review { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .review p { margin: 10px 0 14px; }
+  .review .who { color: var(--muted); font-size: 13px; }
+  @media (max-width: 860px) { .reviews { grid-template-columns: 1fr; } }
+
+  details { border-bottom: 1px solid var(--line); padding: 16px 0; }
+  summary { cursor: pointer; font-weight: 600; font-size: 16.5px; list-style: none; display: flex; justify-content: space-between; }
+  summary::after { content: "+"; color: var(--volt); font-size: 20px; line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { color: var(--muted); margin: 10px 0 0; }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0 56px; color: var(--muted); font-size: 13px; }
+  footer .logo { display: inline-block; margin-bottom: 10px; color: var(--text); }
+
+  /* ---------- toast ---------- */
+  .toast {
+    position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 140%);
+    background: var(--text); color: #111; padding: 14px 20px; border-radius: 12px;
+    font-weight: 600; font-size: 15px; max-width: calc(100% - 32px); text-align: center;
+    box-shadow: 0 12px 40px rgba(0,0,0,.5); transition: transform .3s ease; z-index: 50;
+  }
+  .toast.show { transform: translate(-50%, 0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .driving #couch-body, .driving .wheel, .driving .speedlines, .driving .plug { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">⚡ Holiday Sale: free 3-prong adapter with every COUCH-E. Limited time. Unlimited regret.</div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#">BODO<span>/</span>MOTORWORKS</a>
+    <div class="navlinks">
+      <a href="#">Couches</a>
+      <a href="#specs">Specs</a>
+      <a href="#reviews">Owners</a>
+      <a href="#faq">Support</a>
+    </div>
+    <button class="cart" id="cartBtn" type="button">Cart (<b id="cartCount">0</b>)</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <div class="product">
+    <!-- product image -->
+    <div class="gallery">
+      <div class="stage" id="stage">
+        <span class="tag">NEW</span>
+        <span class="tag2">Model shown with optional cupholders</span>
+
+        <svg id="couch" viewBox="0 0 640 340" role="img" aria-label="Illustration of an electric couch on wheels">
+          <!-- wall outlet + cable -->
+          <g class="plug">
+            <rect x="598" y="150" width="30" height="44" rx="5" fill="#e8e8e8"/>
+            <rect x="607" y="160" width="4" height="10" rx="1" fill="#333"/>
+            <rect x="616" y="160" width="4" height="10" rx="1" fill="#333"/>
+            <path d="M600 178 C 570 190, 575 255, 548 248" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <!-- speed lines -->
+          <g class="speedlines" stroke="#d4ff3a" stroke-width="5" stroke-linecap="round">
+            <line x1="-40" y1="140" x2="10" y2="140"/>
+            <line x1="-80" y1="190" x2="0" y2="190"/>
+            <line x1="-30" y1="240" x2="20" y2="240"/>
+          </g>
+
+          <g id="couch-body">
+            <!-- shadow -->
+            <ellipse cx="300" cy="318" rx="260" ry="12" fill="#000" opacity=".35"/>
+            <!-- chassis / battery pack -->
+            <rect x="70" y="236" width="460" height="34" rx="8" fill="#2a2f37"/>
+            <rect x="92" y="244" width="120" height="18" rx="4" fill="#d4ff3a"/>
+            <text x="152" y="257.5" text-anchor="middle" font-size="12" font-weight="800" font-family="system-ui, sans-serif" fill="#111">⚡ 98 kWh</text>
+            <!-- back -->
+            <rect x="92" y="70" width="416" height="120" rx="34" class="uph-dark"/>
+            <!-- back cushions -->
+            <rect x="122" y="88" width="170" height="96" rx="24" class="uph"/>
+            <rect x="308" y="88" width="170" height="96" rx="24" class="uph"/>
+            <!-- seat cushions -->
+            <rect x="110" y="176" width="190" height="58" rx="18" class="uph"/>
+            <rect x="300" y="176" width="190" height="58" rx="18" class="uph"/>
+            <line x1="300" y1="182" x2="300" y2="230" stroke="#000" stroke-opacity=".18" stroke-width="3"/>
+            <!-- arms -->
+            <rect x="52" y="128" width="72" height="116" rx="28" class="uph-dark"/>
+            <rect x="476" y="128" width="72" height="116" rx="28" class="uph-dark"/>
+            <!-- cupholders -->
+            <ellipse cx="88" cy="134" rx="16" ry="5" fill="#111" opacity=".55"/>
+            <ellipse cx="512" cy="134" rx="16" ry="5" fill="#111" opacity=".55"/>
+            <!-- racing stripe -->
+            <rect x="290" y="70" width="20" height="120" fill="#fff" opacity=".18"/>
+            <!-- headlights -->
+            <rect x="534" y="244" width="16" height="10" rx="3" fill="#fff8c4"/>
+            <rect x="50" y="244" width="14" height="10" rx="3" fill="#ff4d4d"/>
+            <!-- wheels -->
+            <g class="wheel">
+              <circle cx="140" cy="284" r="32" fill="#111"/>
+              <circle cx="140" cy="284" r="16" fill="#9aa3ad"/>
+              <rect x="137" y="256" width="6" height="56" fill="#9aa3ad"/>
+              <rect x="112" y="281" width="56" height="6" fill="#9aa3ad"/>
+            </g>
+            <g class="wheel">
+              <circle cx="460" cy="284" r="32" fill="#111"/>
+              <circle cx="460" cy="284" r="16" fill="#9aa3ad"/>
+              <rect x="457" y="256" width="6" height="56" fill="#9aa3ad"/>
+              <rect x="432" y="281" width="56" height="6" fill="#9aa3ad"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="thumbs">
+        <div>Front</div><div>Side</div><div>Rear (diffuser)</div><div>Under cushion</div>
+      </div>
+    </div>
+
+    <!-- buy box -->
+    <div class="buy">
+      <div class="eyebrow">ELECTRIC SEATING DIVISION</div>
+      <h1 id="modelName">COUCH-E GT</h1>
+      <p class="subtitle">The sofa that goes. Fully electric. Zero emissions. Zero reasons.</p>
+      <div class="stars">★★★★★ <span>4.9 (1,284 reviews, 1,283 from the same guy)</span></div>
+
+      <div class="price">
+        <span class="now" id="price">$29,999</span>
+        <span class="was" id="wasPrice">$34,999</span>
+      </div>
+      <div class="finance">or 84 low monthly payments of <span id="monthly">$357</span>. Couch not included in couch.</div>
+
+      <div class="group">
+        <h3>Trim</h3>
+        <div class="trims" id="trims"></div>
+      </div>
+
+      <div class="group">
+        <h3>Upholstery: <em id="colorName"></em></h3>
+        <div class="swatches" id="swatches"></div>
+      </div>
+
+      <div class="group">
+        <h3>Options</h3>
+        <div class="addons" id="addons"></div>
+      </div>
+
+      <div class="ctas">
+        <button class="btn btn-primary" id="addToCart" type="button">Add to Cart</button>
+        <button class="btn btn-ghost" id="testSit" type="button">Test Sit ⚡</button>
+      </div>
+      <div class="ship">🚚 Free delivery. The couch drives itself to your house. Please leave a door open.</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Performance you can sit on.</h2>
+    <p class="lead">We took the most-used piece of furniture in the house and asked: what if it was also the most dangerous?</p>
+    <div class="stats">
+      <div><b id="statAccel">4.2s</b><span>0 to fridge</span></div>
+      <div><b id="statTop">38 mph</b><span>Top speed (indoors)</span></div>
+      <div><b id="statRange">1 season</b><span>Range (streaming)</span></div>
+      <div><b id="statSeats">3</b><span>Seats, plus 1 dog</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Engineered in a garage. Probably.</h2>
+    <p class="lead">Every COUCH-E is hand-built by someone who should have been doing something else.</p>
+    <div class="features">
+      <div class="feature"><div class="ico">🛋️</div><h4>Regenerative Recline</h4><p>Leaning back recovers up to 0.4% of battery. Leaning back harder recovers no additional battery but feels great.</p></div>
+      <div class="feature"><div class="ico">🧭</div><h4>Remote-Seeking AI</h4><p>Onboard sensors find the TV remote and drive you to it. Also finds loose change, which is deposited in the frunk.</p></div>
+      <div class="feature"><div class="ico">🔊</div><h4>Active Sound Design</h4><p>A straight-piped V8 recording, played through the subwoofer at a volume your neighbors will discuss.</p></div>
+      <div class="feature"><div class="ico">🔌</div><h4>Charges Anywhere</h4><p>Plugs into any standard wall outlet. Full charge in 6 to 8 hours, or 3 minutes at a Couch Supercharger (none exist).</p></div>
+      <div class="feature"><div class="ico">🛞</div><h4>All-Carpet Traction</h4><p>Dual hub motors with torque vectoring handle shag, berber, and hardwood. Hardwood is not covered under warranty.</p></div>
+      <div class="feature"><div class="ico">🛡️</div><h4>5-Star Cushion Rating</h4><p>Crash-tested against an ottoman, two coffee tables, and the dog. The dog is fine. The dog is mad.</p></div>
+    </div>
+  </section>
+
+  <section id="specs">
+    <h2>Specifications</h2>
+    <p class="lead">Figures for the currently selected trim. Your results will vary, mostly downward.</p>
+    <table class="specs"><tbody id="specTable"></tbody></table>
+  </section>
+
+  <section id="reviews">
+    <h2>What owners are saying</h2>
+    <p class="lead">Real reviews from completely real people.</p>
+    <div class="reviews">
+      <div class="review"><div class="stars">★★★★★</div><p>"Took it to the mailbox. Took it to Costco. Took it on the freeway once. Will not be doing that again, five stars."</p><div class="who">Dale, verified owner</div></div>
+      <div class="review"><div class="stars">★★★★☆</div><p>"Wife says I can't bring it inside anymore. Now it's a patio couch. Patio is 40 feet from where it started."</p><div class="who">Also Dale</div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>"Got pulled over and the officer just asked for a test sit. Best traffic stop of my life."</p><div class="who">Dale (new account)</div></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Support</h2>
+    <details><summary>Is the COUCH-E street legal?</summary><p>The COUCH-E is classified as "a couch," and we're comfortable leaving it there.</p></details>
+    <details><summary>Can I bring it through a doorway?</summary><p>The Loveseat fits through most doorways. The GT fits through most doorways once. The Track Sectional comes with a sawzall.</p></details>
+    <details><summary>Does it come with a warranty?</summary><p>Yes. 3 years or 36 movie nights, whichever comes first. Warranty is voided by popcorn.</p></details>
+    <details><summary>What happens if the battery dies mid-episode?</summary><p>The COUCH-E automatically switches to Legacy Mode, in which it is a regular couch.</p></details>
+    <details><summary>Can I lease one?</summary><p>No, but you can sit on one for free at any of our showrooms, of which there are zero.</p></details>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#">BODO<span style="color:var(--volt)">/</span>MOTORWORKS</a>
+    <div>© 2026 Bodo Motorworks. COUCH-E is a joke, not a product, and cannot be purchased. Please don't put a motor in your couch.</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  // ---------- data ----------
+  const TRIMS = [
+    { id: "ls", name: "COUCH-E Loveseat", short: "Loveseat", blurb: "Single rear hub motor · 2 seats", price: 14999,
+      stats: { accel: "7.9s", top: "12 mph", range: "1 movie", seats: "2" },
+      specs: [["Motor", "Single rear hub, 6 kW"], ["Drivetrain", "RWD (Recliner-Wheel Drive)"], ["Battery", "42 kWh (from a forklift)"],
+              ["0 to fridge", "7.9 seconds"], ["Top speed", "12 mph (walking pace with confidence)"], ["Range", "One feature-length movie, two if you skip the credits"],
+              ["Seating", "2 adults, or 1 adult lying down diagonally"], ["Curb weight", "640 lb"], ["Turning radius", "Your entire living room"]] },
+    { id: "gt", name: "COUCH-E GT", short: "GT", blurb: "Dual motor AWD · 3 seats · most popular", price: 29999,
+      stats: { accel: "4.2s", top: "38 mph", range: "1 season", seats: "3" },
+      specs: [["Motors", "Dual hub, 22 kW combined"], ["Drivetrain", "AWD (All-Weather Davenport)"], ["Battery", "98 kWh, under-cushion mounted"],
+              ["0 to fridge", "4.2 seconds"], ["Top speed", "38 mph (indoors), not tested outdoors on purpose"], ["Range", "One full season of a prestige drama"],
+              ["Seating", "3 adults plus 1 dog"], ["Curb weight", "1,180 lb"], ["Turning radius", "Your entire living room and the hallway"]] },
+    { id: "ts", name: "COUCH-E Track Sectional", short: "Track Sectional", blurb: "Tri-motor · L-shaped · do not take on the highway", price: 54999,
+      stats: { accel: "2.1s", top: "71 mph", range: "3 seasons", seats: "6" },
+      specs: [["Motors", "Tri-motor, 61 kW, one in the chaise"], ["Drivetrain", "AWD with chaise-mounted torque vectoring"], ["Battery", "160 kWh, distributed across every cushion"],
+              ["0 to fridge", "2.1 seconds"], ["Top speed", "71 mph, electronically limited by our lawyer"], ["Range", "Three seasons, or one Super Bowl party"],
+              ["Seating", "6 adults, all of whom must sign a waiver"], ["Curb weight", "2,450 lb (floor rating required)"], ["Turning radius", "Not really"]] }
+  ];
+
+  const COLORS = [
+    { name: "Grandma's Corduroy", main: "#b4532a", dark: "#8a3d1d" },
+    { name: "Midnight Leatherette", main: "#2b2f36", dark: "#1a1d22" },
+    { name: "Racing Green Velour", main: "#1f6b3a", dark: "#154d29" },
+    { name: "Dorm Room Plaid Red", main: "#a3262c", dark: "#76191e" },
+    { name: "Basement Beige", main: "#c9b79a", dark: "#a08f74" },
+    { name: "Volt Yellow (+$0, -dignity)", main: "#c8ef2f", dark: "#97b81c" }
+  ];
+
+  const ADDONS = [
+    { id: "heat", name: "Heated & Ventilated Cushions", note: "Each cushion independently climate controlled. Arguments about the thermostat resolved forever.", price: 1200 },
+    { id: "cups", name: "Cupholder Performance Pack", note: "Upgrades from 2 to 9 cupholders. One holds a 2-liter.", price: 850 },
+    { id: "v8", name: "V8 Sound Generator", note: "Cold start sequence every time you sit down.", price: 2500 },
+    { id: "launch", name: "Launch Control", note: "Hold both armrests and lean back. Requires signed waiver and helmet.", price: 4000 },
+    { id: "snack", name: "Under-Cushion Snack Bay", note: "Climate-controlled frunk. Auto-locks during diet season.", price: 499 },
+    { id: "fsd", name: "Full Self-Sitting (Beta)", note: "The couch sits on itself. We don't know why you'd want this.", price: 8000 }
+  ];
+
+  const CART_MSGS = [
+    "Added to cart. Your couch is currently on a boat.",
+    "Sorry, this couch is charging. Try again in 6 to 8 hours.",
+    "Dealer markup applied: +$10,000. Thank you for your understanding.",
+    "Added. Estimated delivery: whenever it drives itself there.",
+    "Your couch has been added and immediately recalled.",
+    "Cart updated. Please do not sit in the cart.",
+    "Added. Your HOA has been notified."
+  ];
+
+  // ---------- state ----------
+  let trim = TRIMS[1];
+  let color = COLORS[0];
+  const chosen = new Set();
+  let cart = 0, msgIdx = 0;
+
+  const $ = (id) => document.getElementById(id);
+  const money = (n) => "$" + n.toLocaleString("en-US");
+
+  // ---------- render ----------
+  function renderTrims() {
+    $("trims").innerHTML = TRIMS.map(t => `
+      <button class="trim" type="button" data-id="${t.id}" aria-pressed="${t === trim}">
+        <span><b>${t.short}</b><small>${t.blurb}</small></span>
+        <b>${money(t.price)}</b>
+      </button>`).join("");
+  }
+
+  function renderSwatches() {
+    $("swatches").innerHTML = COLORS.map((c, i) => `
+      <button class="swatch" type="button" data-i="${i}" title="${c.name}" aria-label="${c.name}"
+        aria-pressed="${c === color}" style="background:${c.main}"></button>`).join("");
+    $("colorName").textContent = color.name;
+    document.documentElement.style.setProperty("--upholstery", color.main);
+    document.documentElement.style.setProperty("--upholstery-dark", color.dark);
+  }
+
+  function renderAddons() {
+    $("addons").innerHTML = ADDONS.map(a => `
+      <label class="addon">
+        <input type="checkbox" data-id="${a.id}" ${chosen.has(a.id) ? "checked" : ""}>
+        <div>${a.name}<small>${a.note}</small></div>
+        <b>+${money(a.price)}</b>
+      </label>`).join("");
+  }
+
+  function renderSpecs() {
+    $("specTable").innerHTML = trim.specs.map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join("");
+    $("statAccel").textContent = trim.stats.accel;
+    $("statTop").textContent = trim.stats.top;
+    $("statRange").textContent = trim.stats.range;
+    $("statSeats").textContent = trim.stats.seats;
+  }
+
+  function renderPrice() {
+    const extras = ADDONS.filter(a => chosen.has(a.id)).reduce((s, a) => s + a.price, 0);
+    const total = trim.price + extras;
+    $("modelName").textContent = trim.name.toUpperCase();
+    $("price").textContent = money(total);
+    $("wasPrice").textContent = money(Math.round(total * 1.17 / 1000) * 1000 - 1);
+    $("monthly").textContent = money(Math.ceil(total / 84));
+  }
+
+  function renderAll() { renderTrims(); renderSwatches(); renderAddons(); renderSpecs(); renderPrice(); }
+
+  // ---------- events ----------
+  $("trims").addEventListener("click", (e) => {
+    const b = e.target.closest(".trim"); if (!b) return;
+    trim = TRIMS.find(t => t.id === b.dataset.id);
+    renderTrims(); renderSpecs(); renderPrice();
+  });
+
+  $("swatches").addEventListener("click", (e) => {
+    const b = e.target.closest(".swatch"); if (!b) return;
+    color = COLORS[+b.dataset.i];
+    renderSwatches();
+  });
+
+  $("addons").addEventListener("change", (e) => {
+    const id = e.target.dataset.id; if (!id) return;
+    e.target.checked ? chosen.add(id) : chosen.delete(id);
+    renderPrice();
+    if (id === "fsd" && e.target.checked) toast("Full Self-Sitting is in beta. The couch is now sitting on itself.");
+    if (id === "launch" && e.target.checked) toast("Launch Control added. Helmet sold separately.");
+  });
+
+  let toastTimer;
+  function toast(msg) {
+    const t = $("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove("show"), 3200);
+  }
+
+  $("addToCart").addEventListener("click", () => {
+    cart++;
+    $("cartCount").textContent = cart;
+    toast(CART_MSGS[msgIdx++ % CART_MSGS.length]);
+  });
+
+  $("cartBtn").addEventListener("click", () => {
+    toast(cart ? `Checkout is closed. The couch ate it. (${cart} couch${cart > 1 ? "es" : ""} lost)` : "Your cart is empty, like the space where your couch used to be.");
+  });
+
+  let driving = false;
+  $("testSit").addEventListener("click", () => {
+    if (driving) return;
+    driving = true;
+    const stage = $("stage");
+    stage.classList.add("driving");
+    toast(chosen.has("v8") ? "VRRRAAAP 🔊" : "Whirrrrrrr ⚡");
+    setTimeout(() => { stage.classList.remove("driving"); driving = false; }, 2700);
+  });
+
+  renderAll();
+</script>
+</body>
+</html>
