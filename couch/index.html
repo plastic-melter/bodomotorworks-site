@@ -335,7 +335,7 @@
       <div class="stars">★★★★★ <span>4.9 (1,284 reviews, 1,283 from the same guy)</span></div>
 
       <div class="price">
-        <span class="now" id="price">$9,999</span>
+        <span class="now" id="price">$670</span>
         <span class="was" id="wasPrice">$34,999</span>
       </div>
       <div class="finance">or 84 low monthly payments of <span id="monthly">$357</span>. Couch not included in couch.</div>
@@ -365,8 +365,8 @@
 
   <section id="testfahrt">
     <div class="kicker">TESTFAHRT</div>
-    <h2>Real footage. Unfortunately.</h2>
-    <p class="lead">The COUCH-E R1 during low-speed validation. Driver fully reclined, as the engineers intended.</p>
+    <h2>Field test at Supernal Proving Grounds, Fremont, CA</h2>
+    <p class="lead">Strategic partnership with successful EV company!</p>
     <div class="video-wrap">
       <span class="live">● REC</span>
       <video src="img/testdrive.mp4" poster="img/testdrive-poster.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
@@ -379,10 +379,10 @@
     <h2>Performance you can sit on.</h2>
     <p class="lead">We took the most-used piece of furniture in the house and asked: what if it was also the most dangerous?</p>
     <div class="stats">
-      <div><b id="statAccel">4.2s</b><span>0 to fridge</span></div>
-      <div><b id="statTop">38 mph</b><span>Top speed (indoors)</span></div>
-      <div><b id="statRange">1 season</b><span>Range (streaming)</span></div>
-      <div><b id="statSeats">3</b><span>Seats, plus 1 dog</span></div>
+      <div><b>6.9s</b><span>0 to fridge</span></div>
+      <div><b>35–65 mph</b><span>Top speed (config dependent)</span></div>
+      <div><b>42 mi</b><span>Range</span></div>
+      <div><b>2</b><span>Seats, roof rack optional</span></div>
     </div>
   </section>
 
@@ -476,7 +476,7 @@
       </div>
     </div>
     <div class="legal">© 2026 Bodo Motor Werkz. German Engineering · Builds · Repairs · Couches.<br>
-    COUCH-E is a joke, not a product, and cannot be purchased. Please don't put a motor in your couch.</div>
+    COUCH-E is a joke, not a product, and cannot be purchased. Partnerships are fictional; not affiliated with Supernal, BMW, or anyone else with lawyers. Please don't put a motor in your couch.</div>
   </div>
 </footer>
 
@@ -485,45 +485,45 @@
 <script>
   // ---------- data ----------
   const TRIMS = [
-    { id: "r1", name: "COUCH-E R1", short: "R1 Recliner", blurb: "The one that actually exists · 1 seat · as seen on video", price: 9999,
-      stats: { accel: "Eventually", top: "Brisk walk", range: "1 parking lot", seats: "1" },
+    { id: "r1", name: "COUCH-E R1", short: "R1 Recliner", blurb: "The one that actually exists · as seen on video", price: 670,
       specs: [["Body", "Genuine leather recliner, Made in USA (per sticker)"], ["Drivetrain", "Electric, under-seat, exposed for cooling"], ["Footrest", "Permanently deployed for aerodynamic stability"],
-              ["0 to fridge", "Eventually"], ["Top speed", "Brisk walk, verified on camera"], ["Range", "One office park parking lot"],
-              ["Seating", "1 adult, fully reclined (mandatory)"], ["Badging", "Hand-applied with packing tape"], ["Status", "Prototype. Already street tested. Do not tell anyone."]] },
-    { id: "ls", name: "COUCH-E Loveseat", short: "Loveseat", blurb: "Single rear hub motor · 2 seats", price: 14999,
-      stats: { accel: "7.9s", top: "12 mph", range: "1 movie", seats: "2" },
-      specs: [["Motor", "Single rear hub, 6 kW"], ["Drivetrain", "RWD (Recliner-Wheel Drive)"], ["Battery", "42 kWh (from a forklift)"],
-              ["0 to fridge", "7.9 seconds"], ["Top speed", "12 mph (walking pace with confidence)"], ["Range", "One feature-length movie, two if you skip the credits"],
+              ["0 to fridge", "6.9 seconds"], ["Top speed", "35 mph"], ["Range", "42 miles"],
+              ["Seating", "2 (one in the chair, one on the optional roof rack)"], ["Badging", "Hand-applied with packing tape"], ["Status", "Prototype. Already field tested. Do not tell anyone."]] },
+    { id: "ls", name: "COUCH-E Loveseat", short: "Loveseat", blurb: "Single rear hub motor · 2 seats", price: 999,
+      specs: [["Motor", "Single rear hub"], ["Drivetrain", "RWD (Recliner-Wheel Drive)"], ["Battery", "Sized for exactly 42 miles"],
+              ["0 to fridge", "6.9 seconds"], ["Top speed", "45 mph"], ["Range", "42 miles"],
               ["Seating", "2 adults, or 1 adult lying down diagonally"], ["Curb weight", "640 lb"], ["Turning radius", "Your entire living room"]] },
-    { id: "gt", name: "COUCH-E GT", short: "GT", blurb: "Dual motor AWD · 3 seats · most popular", price: 29999,
-      stats: { accel: "4.2s", top: "38 mph", range: "1 season", seats: "3" },
-      specs: [["Motors", "Dual hub, 22 kW combined"], ["Drivetrain", "AWD (All-Weather Davenport)"], ["Battery", "98 kWh, under-cushion mounted"],
-              ["0 to fridge", "4.2 seconds"], ["Top speed", "38 mph (indoors), not tested outdoors on purpose"], ["Range", "One full season of a prestige drama"],
-              ["Seating", "3 adults plus 1 dog"], ["Curb weight", "1,180 lb"], ["Turning radius", "Your entire living room and the hallway"]] },
-    { id: "ts", name: "COUCH-E Track Sectional", short: "Track Sectional", blurb: "Tri-motor · L-shaped · do not take on the Autobahn", price: 54999,
-      stats: { accel: "2.1s", top: "71 mph", range: "3 seasons", seats: "6" },
-      specs: [["Motors", "Tri-motor, 61 kW, one in the chaise"], ["Drivetrain", "AWD with chaise-mounted torque vectoring"], ["Battery", "160 kWh, distributed across every cushion"],
-              ["0 to fridge", "2.1 seconds"], ["Top speed", "71 mph, electronically limited by our lawyer"], ["Range", "Three seasons, or one Super Bowl party"],
-              ["Seating", "6 adults, all of whom must sign a waiver"], ["Curb weight", "2,450 lb (floor rating required)"], ["Turning radius", "Not really"]] }
+    { id: "gt", name: "COUCH-E GT", short: "GT", blurb: "Dual motor AWD · 2 seats + 1 dog · most popular", price: 1420,
+      specs: [["Motors", "Dual hub"], ["Drivetrain", "AWD (All-Weather Davenport)"], ["Battery", "Under-cushion mounted"],
+              ["0 to fridge", "6.9 seconds"], ["Top speed", "55 mph"], ["Range", "42 miles"],
+              ["Seating", "2 adults plus 1 dog"], ["Curb weight", "1,180 lb"], ["Turning radius", "Your entire living room and the hallway"]] },
+    { id: "ts", name: "COUCH-E Track Sectional", short: "Track Sectional", blurb: "Tri-motor · L-shaped · do not take on the Autobahn", price: 2690,
+      specs: [["Motors", "Tri-motor, one in the chaise"], ["Drivetrain", "AWD with chaise-mounted torque vectoring"], ["Battery", "Distributed across every cushion"],
+              ["0 to fridge", "6.9 seconds (it's heavy, the fridge is close)"], ["Top speed", "65 mph, electronically limited by our lawyer"], ["Range", "42 miles, or 9 with launch control"],
+              ["Seating", "2 officially. 6 if nobody's checking."], ["Curb weight", "2,450 lb (floor rating required)"], ["Turning radius", "Not really"]] }
   ];
 
   // The photo is real oxblood leather; other colors are CSS filters on it.
+  // The photo is real; the other colors are CSS filters on it.
   const COLORS = [
-    { name: "Oxblood Leather (as tested)", swatch: "#6e1f22", paint: "none" },
-    { name: "Nürburgring Black", swatch: "#232326", paint: "saturate(0) brightness(.6) contrast(1.15)" },
-    { name: "Bundesrot", swatch: "#c4161c", paint: "saturate(1.9) brightness(1.25) hue-rotate(4deg)" },
-    { name: "Goldgelb", swatch: "#e0b100", paint: "hue-rotate(48deg) saturate(2.2) brightness(1.7)" },
-    { name: "Racing Green", swatch: "#1f6b3a", paint: "hue-rotate(135deg) saturate(1.2) brightness(1.05)" },
-    { name: "Basement Beige", swatch: "#c9b79a", paint: "sepia(.8) saturate(.55) brightness(1.75)" }
+    { name: "Dad's Den Burgundy (as tested)", swatch: "#6e1f22", paint: "none" },
+    { name: "Murdered-Out Rental Car Black", swatch: "#232326", paint: "saturate(0) brightness(.6) contrast(1.15)" },
+    { name: "Speeding Ticket Red", swatch: "#c4161c", paint: "saturate(1.9) brightness(1.25) hue-rotate(4deg)" },
+    { name: "Mustard Stain Yellow", swatch: "#e0b100", paint: "hue-rotate(48deg) saturate(2.2) brightness(1.7)" },
+    { name: "Touch Grass Green", swatch: "#1f6b3a", paint: "hue-rotate(135deg) saturate(1.2) brightness(1.05)" },
+    { name: "Landlord Special Beige", swatch: "#c9b79a", paint: "sepia(.8) saturate(.55) brightness(1.75)" }
   ];
 
   const ADDONS = [
-    { id: "heat", name: "Heated & Ventilated Cushions", note: "Each cushion independently climate controlled. Arguments about the thermostat resolved forever.", price: 1200 },
-    { id: "cups", name: "Cupholder Performance Pack", note: "Upgrades from 2 to 9 cupholders. One holds a Maß.", price: 850 },
-    { id: "v8", name: "V8 Sound Generator", note: "Cold start sequence every time you sit down.", price: 2500 },
-    { id: "launch", name: "Launch Control", note: "Hold both armrests and lean back. Requires signed waiver and helmet.", price: 4000 },
-    { id: "snack", name: "Under-Cushion Snack Bay", note: "Climate-controlled frunk. Auto-locks during diet season.", price: 499 },
-    { id: "fsd", name: "Full Self-Sitting (Beta)", note: "The couch sits on itself. We don't know why you'd want this.", price: 8000 }
+    { id: "glow", name: "LED Underglow", note: "RGB, app-controlled, syncs to whatever's on TV. Mandatory for parking-lot meets.", price: 69 },
+    { id: "subs", name: "Subwoofer Array", note: "Four 12-inch subs under the seat. Rattles windows, fillings, and the HOA.", price: 249 },
+    { id: "v8", name: "V8 Sound Generator", note: "Cold start sequence every time you sit down. Best with the Subwoofer Array.", price: 149 },
+    { id: "roof", name: "Roof Rack", note: "Adds the second seat, technically. Rated for one passenger or two kayaks.", price: 79 },
+    { id: "heat", name: "Heated & Ventilated Cushions", note: "Each cushion independently climate controlled. Thermostat arguments resolved forever.", price: 89 },
+    { id: "cups", name: "Cupholder Performance Pack", note: "Upgrades from 2 to 9 cupholders. One holds a Maß.", price: 25 },
+    { id: "launch", name: "Launch Control", note: "Hold both armrests and lean back. Requires signed waiver and helmet.", price: 199 },
+    { id: "snack", name: "Under-Cushion Snack Bay", note: "Climate-controlled frunk. Auto-locks during diet season.", price: 39 },
+    { id: "fsd", name: "Full Self-Sitting (Beta)", note: "The couch sits on itself. We don't know why you'd want this.", price: 420 }
   ];
 
   const CART_MSGS = [
@@ -579,10 +579,6 @@
 
   function renderSpecs() {
     $("specTable").innerHTML = trim.specs.map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join("");
-    $("statAccel").textContent = trim.stats.accel;
-    $("statTop").textContent = trim.stats.top;
-    $("statRange").textContent = trim.stats.range;
-    $("statSeats").textContent = trim.stats.seats;
   }
 
   function renderPrice() {
@@ -590,7 +586,7 @@
     const total = trim.price + extras;
     $("modelName").textContent = trim.name.toUpperCase();
     $("price").textContent = money(total);
-    $("wasPrice").textContent = money(Math.round(total * 1.17 / 1000) * 1000 - 1);
+    $("wasPrice").textContent = money(Math.ceil(total * 1.25 / 10) * 10 - 1);
     $("monthly").textContent = money(Math.ceil(total / 84));
   }
 
@@ -630,6 +626,9 @@
     renderPrice();
     if (id === "fsd" && e.target.checked) toast("Full Self-Sitting is in beta. The couch is now sitting on itself.");
     if (id === "launch" && e.target.checked) toast("Launch Control added. Helmet sold separately.");
+    if (id === "glow" && e.target.checked) toast("Underglow added. Your couch is now 40% faster at night.");
+    if (id === "subs" && e.target.checked) toast("Subwoofer Array added. Your neighbors have been pre-notified.");
+    if (id === "roof" && e.target.checked) toast("Roof Rack added. Seating capacity: 2. Comfort capacity: 1.");
   });
 
   let toastTimer;
